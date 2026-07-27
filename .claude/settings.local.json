@@ -11,7 +11,8 @@
       "Bash(git push *)",
       "Bash(git ls-remote *)",
       "Bash(git fetch *)",
-      "Bash(git checkout *)"
+      "Bash(git checkout *)",
+      "Bash(curl *)"
     ]
   }
 }
