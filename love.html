@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>甜甜姐姐 ❤️</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      width: 100%;
+      min-height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                   "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      overflow: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.85) 0 2px, transparent 3px),
+        radial-gradient(circle at 75% 15%, rgba(255,255,255,.75) 0 2px, transparent 3px),
+        radial-gradient(circle at 85% 75%, rgba(255,255,255,.8) 0 2px, transparent 3px),
+        linear-gradient(135deg, #ffdce8 0%, #ffeef5 45%, #eadfff 100%);
+      background-size: 180px 180px, 240px 240px, 210px 210px, 100% 100%;
+      position: relative;
+      color: #5b3c52;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(6px);
+      opacity: .55;
+      pointer-events: none;
+    }
+
+    body::before {
+      width: 320px; height: 320px;
+      background: rgba(255, 148, 188, .28);
+      top: -100px; left: -100px;
+    }
+
+    body::after {
+      width: 360px; height: 360px;
+      background: rgba(170, 137, 255, .24);
+      bottom: -140px; right: -110px;
+    }
+
+    .card {
+      width: min(90vw, 680px);
+      min-height: min(76vh, 650px);
+      padding: 64px 36px 42px;
+      border: 1px solid rgba(255,255,255,.72);
+      border-radius: 34px;
+      background: rgba(255,255,255,.48);
+      box-shadow: 0 30px 80px rgba(119, 76, 121, .18),
+                  inset 0 1px 0 rgba(255,255,255,.85);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .heart {
+      width: 88px;
+      height: 88px;
+      position: relative;
+      transform: rotate(-45deg);
+      background: linear-gradient(145deg, #ff6f9c, #ff9fbe);
+      border-radius: 20px 0 20px 20px;
+      box-shadow: 0 16px 34px rgba(255, 88, 139, .28);
+      margin-bottom: 42px;
+      animation: beat 1.35s ease-in-out infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 88px;
+      height: 88px;
+      background: inherit;
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -44px; left: 0; }
+    .heart::after { left: 44px; top: 0; }
+
+    @keyframes beat {
+      0%, 100% { transform: rotate(-45deg) scale(1); }
+      14% { transform: rotate(-45deg) scale(1.08); }
+      28% { transform: rotate(-45deg) scale(1); }
+      42% { transform: rotate(-45deg) scale(1.07); }
+      56% { transform: rotate(-45deg) scale(1); }
+    }
+
+    .eyebrow {
+      font-size: 15px;
+      letter-spacing: 5px;
+      margin-bottom: 14px;
+      color: #a36586;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(42px, 8vw, 78px);
+      line-height: 1.05;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, #e44f83, #9a72d8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 8px 28px rgba(220, 85, 132, .12);
+    }
+
+    .subtitle {
+      margin: 20px 0 0;
+      font-size: clamp(18px, 3vw, 24px);
+      color: #7b596e;
+    }
+
+    .message {
+      margin: 34px auto 0;
+      max-width: 500px;
+      font-size: 17px;
+      line-height: 2;
+      color: #725766;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      margin-top: 34px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    button {
+      border: 0;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: .25s ease;
+      font-family: inherit;
+    }
+
+    .yes {
+      color: white;
+      background: linear-gradient(135deg, #ff6796, #c87ee9);
+      box-shadow: 0 12px 25px rgba(222, 92, 148, .24);
+    }
+
+    .yes:hover { transform: translateY(-3px) scale(1.03); }
+
+    .more {
+      color: #895d76;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(255,255,255,.9);
+    }
+
+    .more:hover { transform: translateY(-3px); }
+
+    .tip {
+      margin-top: 18px;
+      font-size: 13px;
+      color: #a07c8f;
+      opacity: .9;
+    }
+
+    .floating-heart {
+      position: fixed;
+      bottom: -30px;
+      font-size: 22px;
+      pointer-events: none;
+      animation: floatUp linear forwards;
+      z-index: 3;
+      filter: drop-shadow(0 5px 9px rgba(201, 77, 129, .18));
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% { opacity: 1; }
+      to {
+        transform: translateY(-110vh) translateX(var(--drift)) rotate(18deg);
+        opacity: 0;
+      }
+    }
+
+    .popup {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(78, 37, 67, .18);
+      backdrop-filter: blur(6px);
+      z-index: 10;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+    }
+
+    .popup.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .popup-box {
+      width: min(86vw, 480px);
+      padding: 40px 28px;
+      border-radius: 28px;
+      background: rgba(255,255,255,.94);
+      box-shadow: 0 25px 70px rgba(84, 37, 74, .23);
+      text-align: center;
+      transform: translateY(15px) scale(.96);
+      transition: .25s ease;
+    }
+
+    .popup.show .popup-box {
+      transform: translateY(0) scale(1);
+    }
+
+    .popup-box h2 {
+      margin: 0 0 14px;
+      color: #db5d8a;
+      font-size: 30px;
+    }
+
+    .popup-box p {
+      margin: 0;
+      line-height: 1.9;
+      color: #745669;
+    }
+
+    .close {
+      margin-top: 24px;
+      padding: 11px 24px;
+      color: white;
+      background: #d77ba4;
+    }
+
+    @media (max-width: 520px) {
+      .card { padding: 48px 22px 34px; }
+      .heart { margin-bottom: 30px; }
+      .message { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="card">
+    <div class="heart" aria-hidden="true"></div>
+
+    <div class="eyebrow">TO · SWEET SISTER</div>
+    <h1>甜甜姐姐</h1>
+    <p class="subtitle">喜欢你 ❤️</p>
+
+    <p class="message">
+      想把今天的晚风、路边的晚霞，<br>
+      还有所有悄悄藏起来的小心思，<br>
+      都送给你。
+    </p>
+
+    <div class="buttons">
+      <button class="yes" onclick="showLove()">收下这份喜欢 💗</button>
+      <button class="more" onclick="createHearts(18)">再多一点心动 ✨</button>
+    </div>
+    <div class="tip">点一下按钮，看看会发生什么。</div>
+  </main>
+
+  <div class="popup" id="popup" onclick="hideLove(event)">
+    <div class="popup-box">
+      <h2>给甜甜姐姐的告白 💌</h2>
+      <p>
+        人海那么大，遇见你真的很幸运。<br>
+        这句话其实想说很久了：<br>
+        <strong>甜甜姐姐，我喜欢你。</strong>
+      </p>
+      <button class="close" onclick="hideLove()">好呀 💕</button>
+    </div>
+  </div>
+
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'floating-heart';
+      heart.textContent = ['💗','💕','💖','💘','💞'][Math.floor(Math.random() * 5)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (16 + Math.random() * 22) + 'px';
+      heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+      heart.style.setProperty('--drift', (Math.random() * 160 - 80) + 'px');
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 11000);
+    }
+
+    function createHearts(count = 10) {
+      for (let i = 0; i < count; i++) {
+        setTimeout(createHeart, i * 90);
+      }
+    }
+
+    function showLove() {
+      document.getElementById('popup').classList.add('show');
+      createHearts(26);
+    }
+
+    function hideLove(event) {
+      if (!event || event.target.id === 'popup' || event.target.classList.contains('close')) {
+        document.getElementById('popup').classList.remove('show');
+      }
+    }
+
+    createHearts(5);
+    setInterval(() => {
+      if (Math.random() > 0.35) createHeart();
+    }, 1500);
+  </script>
+</body>
+</html>
