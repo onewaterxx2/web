@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>一路去找你</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="app">
+  <div id="stage">
+    <canvas id="cv" width="960" height="540"></canvas>
+
+    <!-- 游戏内 HUD -->
+    <div id="hud" class="hidden">
+      <div class="hud-left">
+        <span id="hudLevel">第 1 关</span>
+        <span id="hudDate" class="dim">9月1日</span>
+      </div>
+      <div class="hud-right">
+        <span id="hudBuff" class="buff"></span>
+        <span id="hudStars" class="stars"></span>
+        <span id="hudHearts"></span>
+      </div>
+      <div id="hudTip" class="tip"></div>
+    </div>
+
+    <!-- 密码页 -->
+    <div id="gate" class="screen">
+      <div class="gate-box">
+        <div class="gate-heart"><svg viewBox="0 0 24 24" width="42" height="42"><path d="M12 21C4 15 1 10 3.2 6.4C5 3.5 8.4 3.8 10.4 6.2L12 8L13.6 6.2C15.6 3.8 19 3.5 20.8 6.4C23 10 20 15 12 21Z" fill="#E8577E"/></svg></div>
+        <h1>一路去找你</h1>
+        <p class="sub">这是我们认识的第 1 天</p>
+        <input id="gateInput" type="text" inputmode="numeric" maxlength="8" placeholder="8 位数字" autocomplete="off">
+        <button id="gateBtn" class="btn">进 来</button>
+        <p id="gateErr" class="err"></p>
+      </div>
+    </div>
+
+    <!-- 标题页 -->
+    <div id="title" class="screen hidden">
+      <div class="title-box">
+        <h1>一路去找你</h1>
+        <div class="title-avatars">
+          <img id="avMe" alt="">
+          <svg class="mini-heart" viewBox="0 0 24 24"><path d="M12 21C4 15 1 10 3.2 6.4C5 3.5 8.4 3.8 10.4 6.2L12 8L13.6 6.2C15.6 3.8 19 3.5 20.8 6.4C23 10 20 15 12 21Z" fill="#E8577E"/></svg>
+          <img id="avHer" alt="">
+        </div>
+        <p class="sub">十一天，十一关，十一颗心</p>
+        <div class="howto">
+          <div><b>← →</b> 或 <b>A D</b>　移动</div>
+          <div><b>空格</b> 或 <b>W</b>　跳跃（空中再按一次 = 二段跳）</div>
+          <div class="dim">手机：左下方向，右下跳跃</div>
+        </div>
+        <button id="startBtn" class="btn big">出 发</button>
+        <p class="foot">每一关都藏着那一天的事</p>
+        <div id="map" class="map"></div>
+        <p class="foot dim2">通关过的关卡可以点上面的数字重玩</p>
+      </div>
+    </div>
+
+    <!-- 回忆卡片 -->
+    <div id="card" class="screen hidden">
+      <div class="card-box">
+        <div class="card-photo"><img id="cardImg" alt=""><div id="cardNoPhoto" class="nophoto"></div></div>
+        <div class="card-date" id="cardDate">9月1日</div>
+        <div class="card-title" id="cardTitle"></div>
+        <div class="card-lines" id="cardLines"></div>
+        <button id="cardBtn" class="btn">继续走</button>
+      </div>
+    </div>
+
+    <!-- 结局：三幕 -->
+    <div id="ending" class="screen hidden">
+      <div class="end-hearts" id="endHearts"></div>
+      <div class="end-text" id="endText"></div>
+      <div class="end-slide" id="endSlide"></div>
+      <div id="endFinalBox" class="hidden">
+        <div id="endFinal"></div>
+        <div id="endFinalSub"></div>
+        <div id="endStars" class="hidden"></div>
+        <div id="endSign" class="hidden"></div>
+        <button id="endAgain" class="btn hidden">重新回味</button>
+      </div>
+    </div>
+
+    <!-- 转场 / 提示 / 暂停 -->
+    <div id="trans"></div>
+    <div id="toast"></div>
+    <div id="pauseTip" class="hidden">已暂停　按 Esc 继续　按 R 回到起点</div>
+
+    <!-- 触屏控件 -->
+    <div id="touch" class="hidden">
+      <div class="tleft">
+        <button class="tbtn" data-k="left">◀</button>
+        <button class="tbtn" data-k="right">▶</button>
+      </div>
+      <div class="tright">
+        <button class="tbtn jump" data-k="jump">跳</button>
+      </div>
+    </div>
+
+    <button id="fsBtn" class="fs-btn hidden" title="全屏 · F 键">⛶</button>
+    <button id="soundBtn" class="sound hidden" title="声音">♪</button>
+  </div>
+</div>
+
+<script src="js/levels.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
